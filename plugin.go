@@ -27,8 +27,8 @@ func (BandsInTownAgent) GetArtistBiography(ctx context.Context, req *api.ArtistB
 
 	if req.Name != "" {
 		log.Printf("[BandsInTown Bio] Fetching for Name: %s", req.Name)
-		//TODO: get appid from plugin config storage
-		url := "https://rest.bandsintown.com/artists/" + req.Name + "/events?date=upcoming&app_id="+appid;
+		//TODO add apikey (how is unkonw as per BandsInTown api docu ...
+		url := "https://rest.bandsintown.com/artists/" + req.Name + "/events?date=upcoming&app_id="+appId;
 		resp, err := client.Get(ctx, &http.HttpRequest{Url: url.QueryEscape(url), TimeoutMs: 2000})
 		if err != nil || resp.Status != 200 {
 			log.Printf("[BandsInTown Bio] Error getting next Events from BandsInTown (status: %d): %v", resp.Status, err)
@@ -94,11 +94,10 @@ func (BandsInTownAgent) OnInit(ctx context.Context, req *api.InitRequest) (*api.
         return &api.InitResponse{Error: "Missing appId in configuration"}, nil
     }
 
-
     // validate API key
     resp, err := httpClient.Get(ctx, &http.HttpRequest{
 	//TODO: add apiKey to header (? read api documentation)
-        Url: "https://rest.bandsintown.com/?app_id="+appid;
+        Url: url.QueryEscape("https://rest.bandsintown.com/?app_id="+appid);
     })
     if err != nil {
         return &api.InitResponse{Error: "Failed to validate API key: " + err.Error()}, nil
