@@ -1,0 +1,7 @@
+{
+  "name": "bandsintown-navidrome-artistbio",
+  "author": "Stephan Wahlen",
+  "version": "0.1",
+  "description": "Fetches band tour dates from Bandsintown and displays them as artist bio",
+  "capabilities": ["MetadataAgent", "LifecycleManagement"]
+}
