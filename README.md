@@ -1,7 +1,9 @@
 # bandsintown-navidrome-artistbio
 Navidrome plugin that fetches band tour dates and displays them as artist bio.
+Normal Artist-Bio will be overwritten.
 
-This is my first project in golang and 
+This is my first project in golang and should only be seen as a coding exercise.
+I cannot image many people would want this to show up instead of actual artist bios.
 
 ## Usage
 Add the plugin files to your plugin folder.
